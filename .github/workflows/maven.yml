@@ -27,5 +27,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Format Code with Google Java Format
+      run: mvn com.google.googlejavaformat:google-java-format-maven-plugin:format
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Run Super-Linter
+      uses: github/super-linter@v5
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        VALIDATE_JAVA: true
+        DEFAULT_BRANCH: main
