@@ -27,6 +27,13 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Add Google Java Format Plugin
+      run: |
+        echo '<plugin>' >> pom.xml
+        echo '  <groupId>com.google.googlejavaformat</groupId>' >> pom.xml
+        echo '  <artifactId>google-java-format-maven-plugin</artifactId>' >> pom.xml
+        echo '  <version>1.12.0</version>' >> pom.xml
+        echo '</plugin>' >> pom.xml
     - name: Format Code with Google Java Format
       run: mvn com.google.googlejavaformat:google-java-format-maven-plugin:format
     - name: Build with Maven

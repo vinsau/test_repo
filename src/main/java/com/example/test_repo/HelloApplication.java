@@ -7,17 +7,35 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+/**
+ * Main application class for the JavaFX application.
+ */
+public final class HelloApplication extends Application {
+  private static final int SCENE_WIDTH = 320;
+  private static final int SCENE_HEIGHT = 240;
+
+  /**
+   * Starts the JavaFX application.
+   *
+   * @param stage the primary stage for this application
+   * @throws IOException if the FXML file cannot be loaded
+   */
   @Override
-  public void start(Stage stage) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/test_repo/hello-view.fxml"));
-    Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+  public void start(final Stage stage) throws IOException {
+    FXMLLoader fxmlLoader =
+        new FXMLLoader(HelloApplication.class.getResource("/com/example/test_repo/hello-view.fxml"));
+    Scene scene = new Scene(fxmlLoader.load(), SCENE_WIDTH, SCENE_HEIGHT);
     stage.setTitle("Hello, World!");
     stage.setScene(scene);
     stage.show();
   }
 
-  public static void main(String[] args) {
+  /**
+   * Main method to launch the application.
+   *
+   * @param args the command-line arguments
+   */
+  public static void main(final String[] args) {
     launch();
   }
 }
